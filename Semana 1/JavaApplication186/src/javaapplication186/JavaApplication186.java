@@ -59,14 +59,13 @@ public class JavaApplication186 {
         /*
         Edad de una persona 
         camelCase -> edadPersona,
-        Pascal Case -> EdadPersona,
-        kebab case-> edad-persona,
+        PascalCase -> EdadPersona,
+        kebab-case-> edad-persona,
         snake_case -> edad_persona 
         
         
         harcoded //en duro 
-        String villanos = {"Claudia","Diego","Joana","Arnold"};
-        
+        String[] villanos = {"Claudia","Diego","Joana","Arnold"}
         */
         
     }// fin del main
