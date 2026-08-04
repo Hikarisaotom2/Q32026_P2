@@ -16,6 +16,50 @@ public class Alumno {
 
     public Alumno() {
     }
+
+    public Alumno(String cuenta, String nombre, String carrera, int asistencias) {
+        this.cuenta = cuenta;
+        this.nombre = nombre;
+        this.carrera = carrera;
+        this.asistencias = asistencias;
+    }
+
+    public String getCuenta() {
+        return cuenta;
+    }
+
+    public void setCuenta(String cuenta) {
+        this.cuenta = cuenta;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getCarrera() {
+        return carrera;
+    }
+
+    public void setCarrera(String carrera) {
+        this.carrera = carrera;
+    }
+
+    public int getAsistencias() {
+        return asistencias;
+    }
+
+    public void setAsistencias() {
+        asistencias++;
+    }
+
+    @Override
+    public String toString() {
+        return "Alumno{" + "cuenta=" + cuenta + ", nombre=" + nombre + ", carrera=" + carrera + ", asistencias=" + asistencias + '}';
+    }
     
     
     

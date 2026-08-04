@@ -15,6 +15,16 @@ public class Clase_03072026 {
      */
     public static void main(String[] args) {
      
+        /*
+        CRUD......
+        
+        1)Podemos crear clases 
+        2) crear alumnos
+        3)agregar alumnos a una clase. 
+        4) asistencia de la clase 
+        5) ver datos de clase 
+        6)  datos del alumno 
+        */
      
     }
     

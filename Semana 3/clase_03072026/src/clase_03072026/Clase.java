@@ -5,6 +5,8 @@
 package clase_03072026;
 
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.Set;
 
 /**
  *
@@ -79,6 +81,24 @@ public class Clase {
 
     public void setAlumnos(ArrayList<Alumno> alumnos) {
         this.alumnos = alumnos;
+    }
+    
+    public void listar(){
+        System.out.println(this.seccion +" "+ this.nombre+" "+this.dias);
+        Scanner entrada = new Scanner(System.in);
+        for (Alumno alumno : alumnos) {
+            System.out.println(alumno.getNombre() +"presente? ");
+            System.out.println("1. si 2. no");
+            int op = entrada.nextInt();
+            do {
+               if(op==2){
+                alumno.setAsistencias();
+                
+                }else{
+                    System.out.println("Opcion invalida");
+                } 
+            } while (op<1||op>2);
+        }
     }
 
     @Override
