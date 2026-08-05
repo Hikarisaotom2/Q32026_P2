@@ -6,7 +6,6 @@ package clase_03072026;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Set;
 
 /**
  *
@@ -21,8 +20,10 @@ public class Clase {
     String notas;
     String aula;
     ArrayList<Alumno> alumnos ;
+    
 
     public Clase(String nombre, int seccion, String dias, String notas, String aula) {
+
         this.nombre = nombre;
         this.seccion = seccion;
         this.dias = dias;
@@ -83,10 +84,19 @@ public class Clase {
         this.alumnos = alumnos;
     }
     
+    
+    /*
+    Las acciones que puede realizar el objeto deberia ir dentor de la clase: 
+    ej: cazar, dormir, comer son acciones de un animal, si tuvieramos la clase animal esos metodos deberian ir dentor de la clas ey no en el main 
+    */
     public void listar(){
         System.out.println(this.seccion +" "+ this.nombre+" "+this.dias);
         Scanner entrada = new Scanner(System.in);
-        for (Alumno alumno : alumnos) {
+        
+//        for (int i = 0; i < alumnos.size(); i++) {
+//            Alumno alumno = alumnos.get(i);
+//        }
+        for (Alumno alumno : alumnos) {// for each 
             System.out.println(alumno.getNombre() +"presente? ");
             System.out.println("1. si 2. no");
             int op = entrada.nextInt();
@@ -99,6 +109,10 @@ public class Clase {
                 } 
             } while (op<1||op>2);
         }
+    }
+    
+    public void MatricularAlumno(Alumno alumnoNuevo){
+        this.alumnos.add(alumnoNuevo);
     }
 
     @Override

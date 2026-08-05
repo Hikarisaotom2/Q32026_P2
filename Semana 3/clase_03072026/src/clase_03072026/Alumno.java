@@ -17,11 +17,11 @@ public class Alumno {
     public Alumno() {
     }
 
-    public Alumno(String cuenta, String nombre, String carrera, int asistencias) {
+    public Alumno(String cuenta, String nombre, String carrera) {
         this.cuenta = cuenta;
         this.nombre = nombre;
         this.carrera = carrera;
-        this.asistencias = asistencias;
+        this.asistencias = 0;
     }
 
     public String getCuenta() {
@@ -58,7 +58,7 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return "Alumno{" + "cuenta=" + cuenta + ", nombre=" + nombre + ", carrera=" + carrera + ", asistencias=" + asistencias + '}';
+        return "Nombre:" + nombre + " \n Cuenta:  "+cuenta+ " \n Carrera: " +carrera + " \n Asistencias: " + asistencias;
     }
     
     
