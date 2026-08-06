@@ -41,6 +41,10 @@ public class Clase_03072026 {
         
         clases.add(new Clase("P2",123,"1234","n/a","209/3"));
         
+        //Matriculando estudiante de manera hardcoded
+        clases.get(0).MatricularAlumno(alumnos.get(0));
+        clases.get(0).MatricularAlumno(alumnos.get(1));
+        
         while (true) {
             System.out.println("1)Podemos crear clases \n"
                     + "2) crear alumnos\n"
@@ -77,14 +81,9 @@ public class Clase_03072026 {
                        asistencia.listar();
                 }
                 case 5 -> {
-                    
-                    // TODO: fianlizar esta seccion. 
-                    /*
-                     Seccion - Nombre de la clase - Dias - Notas/ comentarios 
-                    ALUMNOS: 
-                    numero cuenta Nombre Asistencias  (por cada alumno)
-                    
-                    */
+                    int posClase = seleciconarClase(clases);
+                   Clase actual = clases.get(posClase);
+                    System.out.println(actual);
                 }
                 case 6 -> {
                     int posAlumno = seleciconarAlumno(alumnos);

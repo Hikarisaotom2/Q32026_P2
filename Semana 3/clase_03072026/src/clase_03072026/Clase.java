@@ -115,12 +115,14 @@ public class Clase {
         this.alumnos.add(alumnoNuevo);
     }
 
-    @Override
+   @Override
     public String toString() {
-        return "Clase{" + "nombre=" + nombre + ", seccion=" + seccion + ", dias=" + dias + ", notas=" + notas + ", aula=" + aula + ", alumnos=" + alumnos + '}';
+        String resultado = seccion + " - " + nombre + " - " + dias + " - " + notas + "\n" + "ALUMNOS\n";
+        for (Alumno alumno : alumnos) {
+            resultado += alumno.getCuenta() + " - " + alumno.getNombre() + " - " + alumno.getAsistencias() + "\n";
+        }
+        return resultado;
     }
-    
-    
     
     
 }
