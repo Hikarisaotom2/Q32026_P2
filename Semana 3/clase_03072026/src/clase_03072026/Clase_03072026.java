@@ -17,7 +17,6 @@ public class Clase_03072026 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
         /*
         CRUD......
         
@@ -139,6 +138,7 @@ public class Clase_03072026 {
     }
 
     public static Clase crearClase() {
+        
         Scanner entrada = new Scanner(System.in);
         System.out.println("Ingrese el nombre de la clase: ");
         String nombre = entrada.nextLine();
