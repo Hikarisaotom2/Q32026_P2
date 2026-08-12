@@ -17,10 +17,11 @@ se utiliza la palabra reservada extends seguida del nombre de la clase de la que
 public class Femenino extends Paciente {
     private String fechaUltimoPeriodo;
     private boolean embarazo;  
-    
+    int prueba; 
     public Femenino(String fechaUltimoPeriodo,boolean embarazo,String nombre, int eda, double altura, double peso, String tipoSangre){
         super(nombre,eda,altura,peso,tipoSangre);
         this.embarazo = embarazo;
         this.fechaUltimoPeriodo = fechaUltimoPeriodo;
     }
+    
 }

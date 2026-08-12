@@ -5,6 +5,7 @@
 package clase_10082026;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -16,7 +17,7 @@ public class Clase_10082026 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-      /*
+        /*
         Herencia: 
         
         Tipos y subtipos de datos. 
@@ -38,31 +39,145 @@ public class Clase_10082026 {
             -> fecha del ultimo periodo menstrual.          fecha ultima revision prostata 
             -> embarazo 
            ......
-        */
-      
-      
-      
-      Femenino claudia = new Femenino("31/8/2026", false, "Claudia",90,1.70,180.0,"O+");
-      Masculino carlos = new Masculino("31/8/2060","Carlos",18,1.70,160,"O+");
-     
-      Paciente p1 = new Femenino("31/8/2026", false, "Claudia",90,1.70,180.0,"O+");
-      Paciente p2 = new Masculino("31/8/2060","Carlos",18,1.70,160,"O+");
-      Paciente p3 = new Paciente("Carlos",18,1.70,160,"O+");
-      
-      
-      ArrayList<Paciente> pacientes = new ArrayList<>();
-      
-      pacientes.add(claudia);
-      pacientes.add(carlos);
-      pacientes.add(p1);
-      pacientes.add(p3);
-      pacientes.add(p2);
-      
-      
-      
-      
-      
-      
+         */
+
+
+
+        ArrayList<Paciente> pacientes = new ArrayList<>();
+        
+        Femenino claudia = new Femenino("31/8/2026", false, "Claudia", 90, 1.70, 180.0, "O+");
+        Masculino carlos = new Masculino("31/8/2060", "Carlos", 18, 1.70, 160, "O+");
+
+        Paciente p1 = new Femenino("31/8/2026", false, "Claudia", 90, 1.70, 180.0, "O+");
+        Paciente p2 = new Masculino("31/8/2060", "Carlos", 18, 1.70, 160, "O+");
+        Paciente p3 = new Paciente("Carlos", 18, 1.70, 160, "O+");
+        pacientes.add(claudia);
+        pacientes.add(carlos);
+        pacientes.add(p1);
+        pacientes.add(p3);
+        pacientes.add(p2);
+        
+        
+        Scanner entrada = new Scanner(System.in);
+        while (true) {
+            System.out.println("1 crear pacientes \n "
+                    + "2 modificar pacientes\n "
+                    + "3 eliminar pacientes \n"
+                    + "4 listar "
+            );
+            int op = entrada.nextInt();
+            switch (op) {
+                case 1 -> {
+                    Paciente nuevoPaciente = crearPacaciente();
+                    pacientes.add(nuevoPaciente);
+
+//                    pacientes.add(crearPacaciente()); operacion equivalente 
+                }
+                case 2 -> {
+                }
+                case 3 -> {
+                }
+                case 4 -> {
+                    listarFemenino(pacientes);
+                }
+
+                default -> {
+                    break;
+                }
+            }
+
+        }
+        // 1 )  Tercer contorl de acceso: Private, public, ...... 
+        // 2 ) Identificar tipo de objeto. 
+
+        /*
+      CRUD 
+       -> crear 
+        -> femeninos 
+        -> maculinos 
+      -> modificar
+        -> se debe identificar el tipo de paciente para saber que atributos se modifican 
+      -> eliminar 
+      -> listar 
+        -> todos los pacientes 
+        -> pacientes masculinos 
+        -> pacientes femeninos 
+         */
     }
     
+    
+    public static void listarFemenino(ArrayList<Paciente> pacientes){
+        for (int i = 0; i < pacientes.size(); i++) {
+            Paciente paciente = pacientes.get(i);
+           if(paciente instanceof Femenino ){
+               System.out.println("Mujer");
+               
+           } else if(paciente instanceof Masculino){
+               System.out.println("Hombre");
+           }else{
+               System.out.println("paciente regular");
+           }
+           
+        }
+    }
+    
+    
+    public static Paciente crearPacaciente() {
+        Scanner entrada = new Scanner(System.in);
+        String nombre;
+        int edad;
+        double altura;
+        double peso;
+        String tipoSangre;
+        System.out.println("Ingrese el nombre");
+        nombre = entrada.nextLine();
+        System.out.println("edad");
+        edad = entrada.nextInt();
+        System.out.println("altura ");
+        altura = entrada.nextDouble();
+        System.out.println("Peso");
+        peso = entrada.nextDouble();
+        System.out.println("tipo de sangre");
+        entrada.nextLine(); // Por el error de lectura de leer un numero y luego un string 
+        tipoSangre = entrada.nextLine();
+
+        System.out.println("1. masculino 2. femenino");
+        int tipoPaciente = entrada.nextInt();
+        /*
+        A usar 1 retorno 
+        B usar 2 retornos 
+         */
+
+        // A 
+//            Paciente nuevoPaciente;
+//         if(tipoPaciente==1){ //masculino 
+//            System.out.println("Ultima revision ");
+//            String ultimaRev = entrada.nextLine();
+//            nuevoPaciente =  new Masculino(ultimaRev,nombre,edad,altura,peso,tipoSangre);
+//        }else{ // femenino 
+//            System.out.println("Ultimo peridoo menstrual ");
+//            String ultimoPeriodo = entrada.nextLine();
+//            System.out.println("Embarazo? 1. si 2.no");
+//            int embarazo = entrada.nextInt();
+//            boolean isEmbarazda = embarazo==1;
+//            nuevoPaciente =  new Femenino(ultimoPeriodo,isEmbarazda,nombre,edad,altura,peso,tipoSangre);
+//        }
+//                
+//        return nuevoPaciente;
+//        B
+        if (tipoPaciente == 1) { //masculino 
+            System.out.println("Ultima revision ");
+            entrada.nextLine();
+            String ultimaRev = entrada.nextLine();
+            return new Masculino(ultimaRev, nombre, edad, altura, peso, tipoSangre);
+        } else { // femenino 
+            System.out.println("Ultimo peridoo menstrual ");
+            entrada.nextLine();
+            String ultimoPeriodo = entrada.nextLine();
+            System.out.println("Embarazo? 1. si 2.no");
+            int embarazo = entrada.nextInt();
+            boolean isEmbarazda = embarazo == 1;
+            return new Femenino(ultimoPeriodo, isEmbarazda, nombre, edad, altura, peso, tipoSangre);
+        }
+    }
 }

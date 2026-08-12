@@ -9,11 +9,20 @@ package clase_10082026;
  * @author claudiacortes
  */
 public class Paciente {
-      String nombre;
-      int eda;
-      double altura;
-      double peso;
-      String tipoSangre;
+    /*
+    -> Public: 
+        Todos tienen acceso 
+     -> Private: 
+        Solamente la clase tiene acceso a esa informacion 
+     -> Protected: 
+            solamente la clase y sus hijos tiene acceso a la informacion 
+    */
+    
+       protected String nombre;
+       protected int eda;
+       protected double altura;
+       protected  double peso;
+       protected String tipoSangre;
 
     public Paciente(String nombre, int eda, double altura, double peso, String tipoSangre) {
         this.nombre = nombre;
