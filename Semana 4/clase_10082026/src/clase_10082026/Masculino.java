@@ -15,6 +15,15 @@ public class Masculino extends Paciente {
         super(nombre, eda, altura, peso, tipoSangre);
         this.ultimaRevision = ultimaRevision;
     }
+
+    public String getUltimaRevision() {
+        return ultimaRevision;
+    }
+
+    public void setUltimaRevision(String ultimaRevision) {
+        this.ultimaRevision = ultimaRevision;
+    }
+    
     
     
 }

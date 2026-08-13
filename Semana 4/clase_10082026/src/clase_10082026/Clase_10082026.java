@@ -41,29 +41,26 @@ public class Clase_10082026 {
            ......
          */
 
-
-
         ArrayList<Paciente> pacientes = new ArrayList<>();
-        
-        Femenino claudia = new Femenino("31/8/2026", false, "Claudia", 90, 1.70, 180.0, "O+");
+
+        Femenino claudia = new Femenino("15/8/2026", false, "Claudia", 90, 1.70, 180.0, "O+");
         Masculino carlos = new Masculino("31/8/2060", "Carlos", 18, 1.70, 160, "O+");
 
-        Paciente p1 = new Femenino("31/8/2026", false, "Claudia", 90, 1.70, 180.0, "O+");
-        Paciente p2 = new Masculino("31/8/2060", "Carlos", 18, 1.70, 160, "O+");
+        Paciente p1 = new Femenino("18/8/2026", false, "Claudia", 90, 1.70, 180.0, "O+");
+        Paciente p2 = new Masculino("20/8/2060", "Carlos", 18, 1.70, 160, "O+");
         Paciente p3 = new Paciente("Carlos", 18, 1.70, 160, "O+");
         pacientes.add(claudia);
         pacientes.add(carlos);
         pacientes.add(p1);
         pacientes.add(p3);
         pacientes.add(p2);
-        
-        
+
         Scanner entrada = new Scanner(System.in);
         while (true) {
-            System.out.println("1 crear pacientes \n "
-                    + "2 modificar pacientes\n "
+            System.out.println("1 crear pacientes \n"
+                    + "2 modificar pacientes\n"
                     + "3 eliminar pacientes \n"
-                    + "4 listar "
+                    + "4 listar"
             );
             int op = entrada.nextInt();
             switch (op) {
@@ -74,11 +71,32 @@ public class Clase_10082026 {
 //                    pacientes.add(crearPacaciente()); operacion equivalente 
                 }
                 case 2 -> {
+                    //Modificar 
+                    modificarPaciente(pacientes);
+
                 }
                 case 3 -> {
                 }
                 case 4 -> {
-                    listarFemenino(pacientes);
+                    System.out.println("Desea listar \n"
+                            + "1 Todos los pacientes \n"
+                            + "2 Mujeres \n"
+                            + "3 Hombres \n");
+                    int opListar = entrada.nextInt();
+                    switch (opListar) {
+                        case 1 -> {
+                            listarPacientes(pacientes);
+                        }
+                        case 2 -> {
+                            listarFemenino(pacientes);
+                        }
+                        case 3 -> {
+                            listarMasculino(pacientes);
+                        }
+                        default -> {
+                            System.out.println("Opcion invalida");
+                        }
+                    }
                 }
 
                 default -> {
@@ -87,7 +105,7 @@ public class Clase_10082026 {
             }
 
         }
-        // 1 )  Tercer contorl de acceso: Private, public, ...... 
+        // 1 )  Tercer control de acceso: Private, public, ...... 
         // 2 ) Identificar tipo de objeto. 
 
         /*
@@ -104,24 +122,69 @@ public class Clase_10082026 {
         -> pacientes femeninos 
          */
     }
-    
-    
-    public static void listarFemenino(ArrayList<Paciente> pacientes){
+
+    public static void modificarPaciente(ArrayList<Paciente> pacientes) {
+        listarPacientes(pacientes);
+        System.out.println("Ingrese la pos del paciente que desea modificar");
+        Scanner entrada = new Scanner(System.in);
+        int pos = entrada.nextInt();
+
+        Paciente pacienteModificar = pacientes.get(pos);
+
+        if (pacienteModificar instanceof Masculino) {// objeto del tipo masculino
+            //Casteo: conversion explicita de datos
+            //(Tipo de dato al que queremos convertir) Variable que tiene el tipo de dato a convertir
+            Masculino pacienteMasculino = (Masculino) pacienteModificar;
+            System.out.println("Cual es la fecha de la ultima revision:  ");
+            String nuevaFecha = entrada.nextLine();
+            pacienteMasculino.setUltimaRevision(nuevaFecha);
+
+        } else if (pacienteModificar instanceof Femenino) {// objeto del tipo femenino
+
+            Femenino pacienteFemenino = (Femenino) pacienteModificar;
+            System.out.println("Fecha ultimo periodo");
+             entrada.nextLine();
+            String fechaUltimoPeriodo = entrada.nextLine();
+            System.out.println("Embarazo? 1. si 2.No");
+            int op = entrada.nextInt();
+            boolean embarazo = op == 1;
+            pacienteFemenino.setFechaUltimoPeriodo(fechaUltimoPeriodo);
+            pacienteFemenino.setEmbarazo(embarazo);
+
+        } else {// objeto del tipo paciente 
+
+        }
+
+    }
+
+    public static void listarFemenino(ArrayList<Paciente> pacientes) {
         for (int i = 0; i < pacientes.size(); i++) {
             Paciente paciente = pacientes.get(i);
-           if(paciente instanceof Femenino ){
-               System.out.println("Mujer");
-               
-           } else if(paciente instanceof Masculino){
-               System.out.println("Hombre");
-           }else{
-               System.out.println("paciente regular");
-           }
-           
+            if (paciente instanceof Femenino) {
+                System.out.println(i + ") " + paciente.nombre + ((Femenino) paciente).getFechaUltimoPeriodo());
+
+            }
         }
     }
-    
-    
+
+    public static void listarMasculino(ArrayList<Paciente> pacientes) {
+        for (int i = 0; i < pacientes.size(); i++) {
+            Paciente paciente = pacientes.get(i);
+            if (paciente instanceof Masculino) {
+                System.out.println(i + ") " + paciente.nombre);
+
+            }
+        }
+    }
+
+    public static void listarPacientes(ArrayList<Paciente> pacientes) {
+        for (int i = 0; i < pacientes.size(); i++) {
+            Paciente paciente = pacientes.get(i);
+            System.out.println(i + ") " + paciente.nombre);
+
+        }
+    }
+
     public static Paciente crearPacaciente() {
         Scanner entrada = new Scanner(System.in);
         String nombre;
@@ -174,9 +237,11 @@ public class Clase_10082026 {
             System.out.println("Ultimo peridoo menstrual ");
             entrada.nextLine();
             String ultimoPeriodo = entrada.nextLine();
+
             System.out.println("Embarazo? 1. si 2.no");
             int embarazo = entrada.nextInt();
             boolean isEmbarazda = embarazo == 1;
+
             return new Femenino(ultimoPeriodo, isEmbarazda, nombre, edad, altura, peso, tipoSangre);
         }
     }
