@@ -20,11 +20,13 @@ public class Clase_13082026 {
             hacer que un metodo se comporte diferente dependiendo de la situacion 
                 NOTA IMPORTANTE: No es exclusivo ni depende de la herencia..... 
                 -> Polimorfismo por sobreescritura simple -> trabaja con herencia 
-                    -> el metodo polimorfico debe estar creado en el padre. 
-                    -> el polimorfismo se configura en En los hijos: 
-                        -> NO PODEMOS MODIFICAR LA DEFINICION DEL METODO QUE ESTA DADA EN EL PADRE
-                        -> Es el mas flexible.Los hijos no estan obligados a sobre escribir. 
                 -> Polimorfismo por clases abstractas  -> Trabaja con herencia 
+                    -> Es mas restictivo que la sobreescritura simple. 
+                    -> Obliga a todos los hijos de una clase a crear su metodo polimorfico para el metodo abstracto 
+                     -> se requiere configuracion en el padre. 
+                     -> Clase abstracta: es una clase que posee como minimo un metodo abstracta 
+                     -> metodo abstracto: es un metodo que carece de definicion. 
+                     
                 -> Polimorfismo por uso de interfaces.  -> Trabaja con interfaces -> abstraccion 
         
         */
@@ -67,11 +69,11 @@ public class Clase_13082026 {
         Docente Medina = new Permanente(30000,"Geovanny Medina", "geovany@unitec.edu","08011970123","125");
         
         
-        Bocanegra.generarComprobante();
-        System.out.println("");
-        Cortes.generarComprobante();
-        System.out.println("");
-        Medina.generarComprobante();
+//        Bocanegra.generarComprobante();
+//        System.out.println("");
+//        Cortes.generarComprobante();
+//        System.out.println("");
+//        Medina.generarComprobante();
     }
     
 }
