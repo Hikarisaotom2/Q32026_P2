@@ -69,6 +69,13 @@ public class Clase_13082026 {
         Docente Cortes = new  DocenteHoraCatedra(7000,2,"Claudia Cortes", "clau_cortes@unitec.edu","080119990123","124");
         //double sueldo, String nombre, String correo, String id, String talentoHumano
         Docente Medina = new Permanente(30000,"Geovanny Medina", "geovany@unitec.edu","08011970123","125");
+        
+        Docente d = new Docente("Reynod Bocanegra", "reynod.bocanegra@unitec.edu","080119751234","123");
+        System.out.println(d);
+        
+        System.out.println(   Bocanegra.getClass());
+        System.out.println(   Cortes.getClass());
+        System.out.println(   Medina.getClass());
 
         
 //        Bocanegra.generarComprobante();
