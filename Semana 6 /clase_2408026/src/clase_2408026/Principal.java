@@ -4,6 +4,8 @@
  */
 package clase_2408026;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author claudiacortes
@@ -17,6 +19,11 @@ public class Principal extends javax.swing.JFrame {
         // Previo al render 
         initComponents();// renderizado 
         // Render completo 
+        txtNombre.setVisible(false);
+        txtMensaje.setVisible(false);
+        btnPrinicpal.setVisible(false);
+        lblCorreo.setVisible(false);
+        lblMensaje.setVisible(false);
     }
 
     /**
@@ -29,15 +36,48 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         btnPrinicpal = new javax.swing.JButton();
+        txtNombre = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtMensaje = new javax.swing.JTextArea();
+        lblCorreo = new javax.swing.JLabel();
+        lblMensaje = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtHistorial = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        btnRedactar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnPrinicpal.setBackground(new java.awt.Color(204, 204, 255));
-        btnPrinicpal.setFont(new java.awt.Font("Lao Sangam MN", 1, 36)); // NOI18N
-        btnPrinicpal.setText("Click 2!");
+        btnPrinicpal.setFont(new java.awt.Font("Lao Sangam MN", 3, 36)); // NOI18N
+        btnPrinicpal.setText("Enviar");
         btnPrinicpal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnPrinicpalMouseClicked(evt);
+            }
+        });
+
+        txtNombre.setBackground(new java.awt.Color(204, 204, 255));
+        txtNombre.setForeground(new java.awt.Color(51, 51, 255));
+
+        txtMensaje.setColumns(20);
+        txtMensaje.setRows(5);
+        jScrollPane1.setViewportView(txtMensaje);
+
+        lblCorreo.setText("Correo Destinatario");
+
+        lblMensaje.setText("Mensaje");
+
+        txtHistorial.setColumns(20);
+        txtHistorial.setRows(5);
+        jScrollPane2.setViewportView(txtHistorial);
+
+        jLabel1.setText("Historial");
+
+        btnRedactar.setText("Redactar Nuevo!");
+        btnRedactar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRedactarMouseClicked(evt);
             }
         });
 
@@ -46,24 +86,88 @@ public class Principal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(257, 257, 257)
-                .addComponent(btnPrinicpal)
-                .addContainerGap(276, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnPrinicpal)
+                        .addGap(262, 262, 262))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lblCorreo)
+                                .addGap(53, 53, 53))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lblMensaje)
+                                .addGap(76, 76, 76))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(58, 58, 58)
+                                .addComponent(btnRedactar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtNombre)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE))
+                        .addGap(99, 99, 99))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(91, 91, 91)
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(186, 186, 186)
-                .addComponent(btnPrinicpal)
-                .addContainerGap(215, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(39, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblCorreo))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(33, 33, 33)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(27, 27, 27))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnRedactar)
+                                        .addGap(170, 170, 170))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lblMensaje)
+                                .addGap(137, 137, 137)))
+                        .addComponent(btnPrinicpal))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPrinicpalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrinicpalMouseClicked
-        System.out.println("click!!");
+        String destinatario = txtNombre.getText();
+        String mensaje = txtMensaje.getText();
+        
+        Correo c = new Correo(destinatario,mensaje);
+        System.out.println(c);
+        JOptionPane.showMessageDialog(this, "Correo enviado exitosamente");
+        
+        txtNombre.setText(null);
+        txtMensaje.setText(null);
+        
     }//GEN-LAST:event_btnPrinicpalMouseClicked
+
+    private void btnRedactarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRedactarMouseClicked
+        //mostrar elementos de redactar correo 
+                txtNombre.setVisible(true);
+        txtMensaje.setVisible(true);
+        btnPrinicpal.setVisible(true);
+        lblCorreo.setVisible(true);
+        lblMensaje.setVisible(true);
+    }//GEN-LAST:event_btnRedactarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -98,9 +202,19 @@ public class Principal extends javax.swing.JFrame {
                 new Principal().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPrinicpal;
+    private javax.swing.JButton btnRedactar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblCorreo;
+    private javax.swing.JLabel lblMensaje;
+    private javax.swing.JTextArea txtHistorial;
+    private javax.swing.JTextArea txtMensaje;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
