@@ -32,10 +32,13 @@ public class Correo {
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
+    
+
 
     @Override
     public String toString() {
-        return "Correo{" + "destinatario=" + destinatario + ", mensaje=" + mensaje + '}';
+             return "destinatario: " + destinatario + "\nmensaje=" + mensaje + '}';
+       
     }
     
     

@@ -4,6 +4,7 @@
  */
 package clase_2408026;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,7 +12,7 @@ import javax.swing.JOptionPane;
  * @author claudiacortes
  */
 public class Principal extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Principal
      */
@@ -19,13 +20,31 @@ public class Principal extends javax.swing.JFrame {
         // Previo al render 
         initComponents();// renderizado 
         // Render completo 
-        txtNombre.setVisible(false);
-        txtMensaje.setVisible(false);
-        btnPrinicpal.setVisible(false);
-        lblCorreo.setVisible(false);
-        lblMensaje.setVisible(false);
-    }
+        pantallaMail(false);
+         
 
+   
+        
+    }
+    
+    
+    void pantallaMail(boolean mostrar){
+//        txtNombre.setVisible(mostrar);
+//        txtMensaje.setVisible(mostrar);
+//        btnPrinicpal.setVisible(mostrar);
+//        lblCorreo.setVisible(mostrar);
+//        lblMensaje.setVisible(mostrar);
+//        scroll.setVisible(mostrar);
+          jpCorreo.setVisible(mostrar);
+    }
+    
+    void historialMails(boolean mostrar){
+//        lblHistorial.setVisible(mostrar);
+//        txtHistorial.setVisible(mostrar);
+//        btnRedactar.setVisible(mostrar);
+//        scrollHistorial.setVisible(mostrar);
+          jpHistorial.setVisible(mostrar);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,18 +54,83 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnPrinicpal = new javax.swing.JButton();
-        txtNombre = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtMensaje = new javax.swing.JTextArea();
-        lblCorreo = new javax.swing.JLabel();
-        lblMensaje = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jpHistorial = new javax.swing.JPanel();
+        lblHistorial = new javax.swing.JLabel();
+        scrollHistorial = new javax.swing.JScrollPane();
         txtHistorial = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
         btnRedactar = new javax.swing.JButton();
+        jpCorreo = new javax.swing.JPanel();
+        lblCorreo = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        lblMensaje = new javax.swing.JLabel();
+        scroll = new javax.swing.JScrollPane();
+        txtMensaje = new javax.swing.JTextArea();
+        btnPrinicpal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new javax.swing.OverlayLayout(getContentPane()));
+
+        jpHistorial.setBackground(new java.awt.Color(204, 255, 204));
+
+        lblHistorial.setText("Historial");
+
+        txtHistorial.setColumns(20);
+        txtHistorial.setRows(5);
+        txtHistorial.setEnabled(false);
+        scrollHistorial.setViewportView(txtHistorial);
+
+        btnRedactar.setText("Redactar Nuevo!");
+        btnRedactar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRedactarMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpHistorialLayout = new javax.swing.GroupLayout(jpHistorial);
+        jpHistorial.setLayout(jpHistorialLayout);
+        jpHistorialLayout.setHorizontalGroup(
+            jpHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpHistorialLayout.createSequentialGroup()
+                .addGroup(jpHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpHistorialLayout.createSequentialGroup()
+                        .addGap(204, 204, 204)
+                        .addComponent(lblHistorial))
+                    .addGroup(jpHistorialLayout.createSequentialGroup()
+                        .addGap(135, 135, 135)
+                        .addComponent(scrollHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRedactar)))
+                .addContainerGap(90, Short.MAX_VALUE))
+        );
+        jpHistorialLayout.setVerticalGroup(
+            jpHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpHistorialLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(lblHistorial)
+                .addGroup(jpHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpHistorialLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(scrollHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpHistorialLayout.createSequentialGroup()
+                        .addGap(177, 177, 177)
+                        .addComponent(btnRedactar)))
+                .addContainerGap(52, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jpHistorial);
+
+        jpCorreo.setBackground(new java.awt.Color(255, 204, 204));
+
+        lblCorreo.setText("Correo Destinatario");
+
+        txtNombre.setBackground(new java.awt.Color(204, 204, 255));
+        txtNombre.setForeground(new java.awt.Color(51, 51, 255));
+
+        lblMensaje.setText("Mensaje");
+
+        txtMensaje.setColumns(20);
+        txtMensaje.setRows(5);
+        scroll.setViewportView(txtMensaje);
 
         btnPrinicpal.setBackground(new java.awt.Color(204, 204, 255));
         btnPrinicpal.setFont(new java.awt.Font("Lao Sangam MN", 3, 36)); // NOI18N
@@ -57,92 +141,51 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        txtNombre.setBackground(new java.awt.Color(204, 204, 255));
-        txtNombre.setForeground(new java.awt.Color(51, 51, 255));
-
-        txtMensaje.setColumns(20);
-        txtMensaje.setRows(5);
-        jScrollPane1.setViewportView(txtMensaje);
-
-        lblCorreo.setText("Correo Destinatario");
-
-        lblMensaje.setText("Mensaje");
-
-        txtHistorial.setColumns(20);
-        txtHistorial.setRows(5);
-        jScrollPane2.setViewportView(txtHistorial);
-
-        jLabel1.setText("Historial");
-
-        btnRedactar.setText("Redactar Nuevo!");
-        btnRedactar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnRedactarMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnPrinicpal)
-                        .addGap(262, 262, 262))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblCorreo)
-                                .addGap(53, 53, 53))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblMensaje)
-                                .addGap(76, 76, 76))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(58, 58, 58)
-                                .addComponent(btnRedactar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtNombre)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE))
-                        .addGap(99, 99, 99))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(91, 91, 91)
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
+        javax.swing.GroupLayout jpCorreoLayout = new javax.swing.GroupLayout(jpCorreo);
+        jpCorreo.setLayout(jpCorreoLayout);
+        jpCorreoLayout.setHorizontalGroup(
+            jpCorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpCorreoLayout.createSequentialGroup()
+                .addGap(216, 216, 216)
+                .addComponent(btnPrinicpal)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jpCorreoLayout.createSequentialGroup()
+                .addGroup(jpCorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpCorreoLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblCorreo))
+                    .addGroup(jpCorreoLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(lblMensaje)))
+                .addGap(32, 32, 32)
+                .addGroup(jpCorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpCorreoLayout.createSequentialGroup()
+                        .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jpCorreoLayout.createSequentialGroup()
+                        .addComponent(txtNombre)
+                        .addGap(29, 29, 29))))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblCorreo))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(33, 33, 33)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(27, 27, 27))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnRedactar)
-                                        .addGap(170, 170, 170))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblMensaje)
-                                .addGap(137, 137, 137)))
-                        .addComponent(btnPrinicpal))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26))
+        jpCorreoLayout.setVerticalGroup(
+            jpCorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpCorreoLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addGroup(jpCorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCorreo)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jpCorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpCorreoLayout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(lblMensaje))
+                    .addGroup(jpCorreoLayout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(57, 57, 57)
+                .addComponent(btnPrinicpal)
+                .addContainerGap(115, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jpCorreo);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -151,22 +194,33 @@ public class Principal extends javax.swing.JFrame {
         String destinatario = txtNombre.getText();
         String mensaje = txtMensaje.getText();
         
-        Correo c = new Correo(destinatario,mensaje);
-        System.out.println(c);
+        Correo nuevoCorreo = new Correo(destinatario,mensaje);
+        System.out.println(nuevoCorreo);
         JOptionPane.showMessageDialog(this, "Correo enviado exitosamente");
         
         txtNombre.setText(null);
         txtMensaje.setText(null);
         
+        historialMails(true);
+        pantallaMail(false);
+        correosEnviados.add(nuevoCorreo);
+        cargarHistorialCorreo();
     }//GEN-LAST:event_btnPrinicpalMouseClicked
 
+    void cargarHistorialCorreo(){
+         txtHistorial.append(null);
+        for (Correo correosEnviado : correosEnviados) {
+             txtHistorial.append("_____________________________\n");
+             txtHistorial.append(correosEnviado.toString());
+             txtHistorial.append("\n_____________________________\n");
+        }
+        
+    }
     private void btnRedactarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRedactarMouseClicked
         //mostrar elementos de redactar correo 
-                txtNombre.setVisible(true);
-        txtMensaje.setVisible(true);
-        btnPrinicpal.setVisible(true);
-        lblCorreo.setVisible(true);
-        lblMensaje.setVisible(true);
+                pantallaMail(true);
+                historialMails(false);
+                
     }//GEN-LAST:event_btnRedactarMouseClicked
 
     /**
@@ -208,13 +262,16 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPrinicpal;
     private javax.swing.JButton btnRedactar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPanel jpCorreo;
+    private javax.swing.JPanel jpHistorial;
     private javax.swing.JLabel lblCorreo;
+    private javax.swing.JLabel lblHistorial;
     private javax.swing.JLabel lblMensaje;
+    private javax.swing.JScrollPane scroll;
+    private javax.swing.JScrollPane scrollHistorial;
     private javax.swing.JTextArea txtHistorial;
     private javax.swing.JTextArea txtMensaje;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
+    private ArrayList<Correo> correosEnviados = new ArrayList<>();
 }
