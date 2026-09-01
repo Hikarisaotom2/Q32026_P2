@@ -4,6 +4,8 @@
  */
 package clase_27082026;
 
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author claudiacortes
@@ -15,6 +17,10 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        jcb_personas.setModel(modelo);
+        
+        
     }
 
     /**
@@ -26,21 +32,173 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        tabsPrincipales = new javax.swing.JTabbedPane();
+        jp_agregar = new javax.swing.JPanel();
+        lblNombre = new javax.swing.JLabel();
+        txt_nombre = new javax.swing.JTextField();
+        btnAgregar = new javax.swing.JButton();
+        jp_ver = new javax.swing.JPanel();
+        jcb_personas = new javax.swing.JComboBox<>();
+        jp_modificar = new javax.swing.JPanel();
+        jp_eliminar = new javax.swing.JPanel();
+        jp_ejemplo = new javax.swing.JPanel();
+        jcbLista = new javax.swing.JComboBox<>();
+        lblTextoSeleccionado = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblNombre.setText("Nombre");
+
+        btnAgregar.setText("Agregar");
+
+        javax.swing.GroupLayout jp_agregarLayout = new javax.swing.GroupLayout(jp_agregar);
+        jp_agregar.setLayout(jp_agregarLayout);
+        jp_agregarLayout.setHorizontalGroup(
+            jp_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_agregarLayout.createSequentialGroup()
+                .addGroup(jp_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_agregarLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(lblNombre)
+                        .addGap(41, 41, 41)
+                        .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jp_agregarLayout.createSequentialGroup()
+                        .addGap(233, 233, 233)
+                        .addComponent(btnAgregar)))
+                .addContainerGap(113, Short.MAX_VALUE))
+        );
+        jp_agregarLayout.setVerticalGroup(
+            jp_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_agregarLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jp_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNombre)
+                    .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
+                .addComponent(btnAgregar)
+                .addGap(50, 50, 50))
+        );
+
+        tabsPrincipales.addTab("Agregar", jp_agregar);
+
+        jcb_personas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        javax.swing.GroupLayout jp_verLayout = new javax.swing.GroupLayout(jp_ver);
+        jp_ver.setLayout(jp_verLayout);
+        jp_verLayout.setHorizontalGroup(
+            jp_verLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_verLayout.createSequentialGroup()
+                .addGap(96, 96, 96)
+                .addComponent(jcb_personas, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(165, Short.MAX_VALUE))
+        );
+        jp_verLayout.setVerticalGroup(
+            jp_verLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_verLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jcb_personas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(242, Short.MAX_VALUE))
+        );
+
+        tabsPrincipales.addTab("Ver", jp_ver);
+
+        javax.swing.GroupLayout jp_modificarLayout = new javax.swing.GroupLayout(jp_modificar);
+        jp_modificar.setLayout(jp_modificarLayout);
+        jp_modificarLayout.setHorizontalGroup(
+            jp_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 702, Short.MAX_VALUE)
+        );
+        jp_modificarLayout.setVerticalGroup(
+            jp_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 283, Short.MAX_VALUE)
+        );
+
+        tabsPrincipales.addTab("Modificar", jp_modificar);
+
+        javax.swing.GroupLayout jp_eliminarLayout = new javax.swing.GroupLayout(jp_eliminar);
+        jp_eliminar.setLayout(jp_eliminarLayout);
+        jp_eliminarLayout.setHorizontalGroup(
+            jp_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 702, Short.MAX_VALUE)
+        );
+        jp_eliminarLayout.setVerticalGroup(
+            jp_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 283, Short.MAX_VALUE)
+        );
+
+        tabsPrincipales.addTab("Eliminar", jp_eliminar);
+
+        jcbLista.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "iNG.Sistemas", "ing", "industrial", "derecho" }));
+        jcbLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbListaActionPerformed(evt);
+            }
+        });
+
+        lblTextoSeleccionado.setText("jLabel1");
+
+        jTextField1.setText("jTextField1");
+
+        javax.swing.GroupLayout jp_ejemploLayout = new javax.swing.GroupLayout(jp_ejemplo);
+        jp_ejemplo.setLayout(jp_ejemploLayout);
+        jp_ejemploLayout.setHorizontalGroup(
+            jp_ejemploLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_ejemploLayout.createSequentialGroup()
+                .addGroup(jp_ejemploLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_ejemploLayout.createSequentialGroup()
+                        .addGap(215, 215, 215)
+                        .addComponent(jcbLista, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jp_ejemploLayout.createSequentialGroup()
+                        .addGap(154, 154, 154)
+                        .addComponent(lblTextoSeleccionado)
+                        .addGap(87, 87, 87)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(324, Short.MAX_VALUE))
+        );
+        jp_ejemploLayout.setVerticalGroup(
+            jp_ejemploLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_ejemploLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jcbLista, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(84, 84, 84)
+                .addGroup(jp_ejemploLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTextoSeleccionado)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(120, Short.MAX_VALUE))
+        );
+
+        tabsPrincipales.addTab("EjemploCopmboBox", jp_ejemplo);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(tabsPrincipales, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(tabsPrincipales, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jcbListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbListaActionPerformed
+        int pos = jcbLista.getSelectedIndex();
+        Object elemento= jcbLista.getSelectedItem(); 
+        
+        System.out.println("indice "+ pos);
+        System.out.println("Valor "+ elemento);
+        
+        lblTextoSeleccionado.setText(elemento.toString());
+    }//GEN-LAST:event_jcbListaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +236,18 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JComboBox<String> jcbLista;
+    private javax.swing.JComboBox<String> jcb_personas;
+    private javax.swing.JPanel jp_agregar;
+    private javax.swing.JPanel jp_ejemplo;
+    private javax.swing.JPanel jp_eliminar;
+    private javax.swing.JPanel jp_modificar;
+    private javax.swing.JPanel jp_ver;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblTextoSeleccionado;
+    private javax.swing.JTabbedPane tabsPrincipales;
+    private javax.swing.JTextField txt_nombre;
     // End of variables declaration//GEN-END:variables
 }
