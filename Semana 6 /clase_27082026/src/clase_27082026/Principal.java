@@ -5,6 +5,7 @@
 package clase_27082026;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,11 +17,13 @@ public class Principal extends javax.swing.JFrame {
      * Creates new form Principal
      */
     public Principal() {
+        
         initComponents();
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-        jcb_personas.setModel(modelo);
-        
-        
+
+        jcb_ver.setModel(modelo);
+        jcb_modificar.setModel(modelo);
+        jcb_eliminar.setModel(modelo);
     }
 
     /**
@@ -38,19 +41,39 @@ public class Principal extends javax.swing.JFrame {
         txt_nombre = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         jp_ver = new javax.swing.JPanel();
-        jcb_personas = new javax.swing.JComboBox<>();
+        jcb_ver = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txt_mostrarNombre = new javax.swing.JTextField();
+        txt_mostrarApellido = new javax.swing.JTextField();
         jp_modificar = new javax.swing.JPanel();
+        jcb_modificar = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txt_modificarNombre = new javax.swing.JTextField();
+        txt_modificarApellido = new javax.swing.JTextField();
+        btn_modificar = new javax.swing.JButton();
         jp_eliminar = new javax.swing.JPanel();
+        jcb_eliminar = new javax.swing.JComboBox<>();
+        btn_eliminar = new javax.swing.JButton();
         jp_ejemplo = new javax.swing.JPanel();
         jcbLista = new javax.swing.JComboBox<>();
         lblTextoSeleccionado = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblNombre.setText("Nombre");
 
         btnAgregar.setText("Agregar");
+        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jp_agregarLayout = new javax.swing.GroupLayout(jp_agregar);
         jp_agregar.setLayout(jp_agregarLayout);
@@ -82,49 +105,147 @@ public class Principal extends javax.swing.JFrame {
 
         tabsPrincipales.addTab("Agregar", jp_agregar);
 
-        jcb_personas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcb_ver.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcb_ver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcb_verActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Nombre");
+
+        jLabel2.setText("Apellido");
 
         javax.swing.GroupLayout jp_verLayout = new javax.swing.GroupLayout(jp_ver);
         jp_ver.setLayout(jp_verLayout);
         jp_verLayout.setHorizontalGroup(
             jp_verLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jp_verLayout.createSequentialGroup()
-                .addGap(96, 96, 96)
-                .addComponent(jcb_personas, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jp_verLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_verLayout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addComponent(jcb_ver, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jp_verLayout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addGroup(jp_verLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(29, 29, 29)
+                        .addGroup(jp_verLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_mostrarNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
+                            .addComponent(txt_mostrarApellido))))
                 .addContainerGap(165, Short.MAX_VALUE))
         );
         jp_verLayout.setVerticalGroup(
             jp_verLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jp_verLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jcb_personas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(242, Short.MAX_VALUE))
+                .addComponent(jcb_ver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addGroup(jp_verLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txt_mostrarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(jp_verLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txt_mostrarApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
 
         tabsPrincipales.addTab("Ver", jp_ver);
+
+        jcb_modificar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcb_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcb_modificarActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Nombre");
+
+        jLabel4.setText("Apellido");
+
+        btn_modificar.setText("modificar");
+        btn_modificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_modificarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jp_modificarLayout = new javax.swing.GroupLayout(jp_modificar);
         jp_modificar.setLayout(jp_modificarLayout);
         jp_modificarLayout.setHorizontalGroup(
             jp_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 702, Short.MAX_VALUE)
+            .addGroup(jp_modificarLayout.createSequentialGroup()
+                .addGroup(jp_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_modificarLayout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addGroup(jp_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jcb_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jp_modificarLayout.createSequentialGroup()
+                                .addGroup(jp_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3))
+                                .addGap(57, 57, 57)
+                                .addGroup(jp_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txt_modificarNombre)
+                                    .addComponent(txt_modificarApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)))))
+                    .addGroup(jp_modificarLayout.createSequentialGroup()
+                        .addGap(260, 260, 260)
+                        .addComponent(btn_modificar)))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
         jp_modificarLayout.setVerticalGroup(
             jp_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 283, Short.MAX_VALUE)
+            .addGroup(jp_modificarLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jcb_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addGroup(jp_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txt_modificarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
+                .addGroup(jp_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(txt_modificarApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addComponent(btn_modificar)
+                .addContainerGap())
         );
 
         tabsPrincipales.addTab("Modificar", jp_modificar);
+
+        jcb_eliminar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btn_eliminar.setText("Eliminar");
+        btn_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_eliminarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jp_eliminarLayout = new javax.swing.GroupLayout(jp_eliminar);
         jp_eliminar.setLayout(jp_eliminarLayout);
         jp_eliminarLayout.setHorizontalGroup(
             jp_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 702, Short.MAX_VALUE)
+            .addGroup(jp_eliminarLayout.createSequentialGroup()
+                .addGroup(jp_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_eliminarLayout.createSequentialGroup()
+                        .addGap(182, 182, 182)
+                        .addComponent(jcb_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jp_eliminarLayout.createSequentialGroup()
+                        .addGap(280, 280, 280)
+                        .addComponent(btn_eliminar)))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         jp_eliminarLayout.setVerticalGroup(
             jp_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 283, Short.MAX_VALUE)
+            .addGroup(jp_eliminarLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jcb_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(93, 93, 93)
+                .addComponent(btn_eliminar)
+                .addContainerGap(127, Short.MAX_VALUE))
         );
 
         tabsPrincipales.addTab("Eliminar", jp_eliminar);
@@ -170,6 +291,32 @@ public class Principal extends javax.swing.JFrame {
 
         tabsPrincipales.addTab("EjemploCopmboBox", jp_ejemplo);
 
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(178, 178, 178)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(230, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(84, Short.MAX_VALUE))
+        );
+
+        tabsPrincipales.addTab("Listas", jPanel1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -199,6 +346,61 @@ public class Principal extends javax.swing.JFrame {
         
         lblTextoSeleccionado.setText(elemento.toString());
     }//GEN-LAST:event_jcbListaActionPerformed
+
+    private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
+       String nombre = txt_nombre.getText();
+       Persona nuevaPersona = new Persona(nombre,nombre);
+        
+      
+       //modelo del combobox.
+       DefaultComboBoxModel modelo= (DefaultComboBoxModel)jcb_ver.getModel();
+//               if(jcb_agregar.getModel() instanceof DefaultComboBoxModel){
+//                   System.out.println("es un DefaultComboBoxModel");
+//               }
+//       
+         System.out.println("MODELO "+jcb_ver.getModel().getClass());;
+       modelo.addElement(nuevaPersona);
+       JOptionPane.showMessageDialog(this, "Persona creada con exito");
+       
+    }//GEN-LAST:event_btnAgregarMouseClicked
+
+    private void jcb_verActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_verActionPerformed
+        Object elementoSeleccionado = jcb_ver.getSelectedItem();
+        if(elementoSeleccionado instanceof Persona){
+            Persona p =  (Persona)elementoSeleccionado;
+            txt_mostrarNombre.setText(p.getNombre());
+            txt_mostrarApellido.setText(p.getApellido());
+            
+        }
+    }//GEN-LAST:event_jcb_verActionPerformed
+
+    private void btn_modificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_modificarMouseClicked
+        String nuevoNombre =  txt_modificarNombre.getText();
+        String nuevoApellido =   txt_modificarApellido.getText();
+                 Object persona= jcb_modificar.getSelectedItem();
+      if(persona instanceof Persona){
+           Persona personaSeleccionada = (Persona) persona;
+           personaSeleccionada.setNombre(nuevoNombre);
+           personaSeleccionada.setApellido(nuevoApellido);
+              JOptionPane.showMessageDialog(this, "Datos actualizados");
+      }
+    }//GEN-LAST:event_btn_modificarMouseClicked
+
+    private void jcb_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_modificarActionPerformed
+        Object persona= jcb_modificar.getSelectedItem();
+      if(persona instanceof Persona){
+          Persona personaSeleccionada = (Persona) persona;
+          txt_modificarNombre.setText(personaSeleccionada.getNombre());
+        txt_modificarApellido.setText(personaSeleccionada.getApellido());
+      }
+    }//GEN-LAST:event_jcb_modificarActionPerformed
+
+    private void btn_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_eliminarMouseClicked
+      int pos = jcb_eliminar.getSelectedIndex();
+      DefaultComboBoxModel modelo = (DefaultComboBoxModel)jcb_eliminar.getModel();
+      modelo.removeElementAt(pos);
+      JOptionPane.showMessageDialog(this, "Datos actualizados");
+    }//GEN-LAST:event_btn_eliminarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -237,9 +439,20 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btn_eliminar;
+    private javax.swing.JButton btn_modificar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JComboBox<String> jcbLista;
-    private javax.swing.JComboBox<String> jcb_personas;
+    private javax.swing.JComboBox<String> jcb_eliminar;
+    private javax.swing.JComboBox<String> jcb_modificar;
+    private javax.swing.JComboBox<String> jcb_ver;
     private javax.swing.JPanel jp_agregar;
     private javax.swing.JPanel jp_ejemplo;
     private javax.swing.JPanel jp_eliminar;
@@ -248,6 +461,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblTextoSeleccionado;
     private javax.swing.JTabbedPane tabsPrincipales;
+    private javax.swing.JTextField txt_modificarApellido;
+    private javax.swing.JTextField txt_modificarNombre;
+    private javax.swing.JTextField txt_mostrarApellido;
+    private javax.swing.JTextField txt_mostrarNombre;
     private javax.swing.JTextField txt_nombre;
     // End of variables declaration//GEN-END:variables
 }
