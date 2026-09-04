@@ -63,6 +63,15 @@ public class Principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,12 +130,10 @@ public class Principal extends javax.swing.JFrame {
         jp_verLayout.setHorizontalGroup(
             jp_verLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jp_verLayout.createSequentialGroup()
+                .addGap(96, 96, 96)
                 .addGroup(jp_verLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jcb_ver, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jp_verLayout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(jcb_ver, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jp_verLayout.createSequentialGroup()
-                        .addGap(96, 96, 96)
                         .addGroup(jp_verLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
@@ -317,6 +324,47 @@ public class Principal extends javax.swing.JFrame {
 
         tabsPrincipales.addTab("Listas", jPanel1);
 
+        jMenu1.setText("Guardar");
+
+        jMenu2.setText("Guardar como");
+
+        jMenuItem2.setText("PDF File");
+        jMenu2.add(jMenuItem2);
+
+        jMenuItem3.setText("Word");
+        jMenu2.add(jMenuItem3);
+
+        jMenuItem4.setText("texto");
+        jMenu2.add(jMenuItem4);
+
+        jMenu1.add(jMenu2);
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, 0));
+        jMenuItem1.setText("Guardar contenido actual");
+        jMenuItem1.setToolTipText("");
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu3.setText("Limpiar");
+
+        jMenuItem5.setText("Limpiar pantalla");
+        jMenuItem5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItem5MouseClicked(evt);
+            }
+        });
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem5);
+
+        jMenuBar1.add(jMenu3);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -331,7 +379,7 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(tabsPrincipales, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -375,6 +423,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jcb_verActionPerformed
 
     private void btn_modificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_modificarMouseClicked
+        btn_modificar.setVisible(false);
         String nuevoNombre =  txt_modificarNombre.getText();
         String nuevoApellido =   txt_modificarApellido.getText();
                  Object persona= jcb_modificar.getSelectedItem();
@@ -401,6 +450,19 @@ public class Principal extends javax.swing.JFrame {
       modelo.removeElementAt(pos);
       JOptionPane.showMessageDialog(this, "Datos actualizados");
     }//GEN-LAST:event_btn_eliminarMouseClicked
+
+    private void jMenuItem5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem5MouseClicked
+
+    }//GEN-LAST:event_jMenuItem5MouseClicked
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+               txt_nombre.setText("");
+       txt_mostrarNombre.setText("");
+        txt_mostrarApellido.setText("");
+        txt_modificarNombre.setText("");
+        txt_modificarApellido.setText("");
+        JOptionPane.showMessageDialog(this, "Pantalla limpia :)");
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -446,6 +508,15 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JList<String> jList1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
