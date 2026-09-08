@@ -5,6 +5,7 @@
 package clase_27082026;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,13 +18,21 @@ public class Principal extends javax.swing.JFrame {
      * Creates new form Principal
      */
     public Principal() {
-        
+
         initComponents();
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        
+        
+        
+        DefaultListModel modeloLista = new DefaultListModel();
+//        
 
         jcb_ver.setModel(modelo);
         jcb_modificar.setModel(modelo);
         jcb_eliminar.setModel(modelo);
+        
+        
+        jl_listaPersonas.setModel(modeloLista);
     }
 
     /**
@@ -35,6 +44,12 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jpm_menuOpciones = new javax.swing.JPopupMenu();
+        jmi_limpiar = new javax.swing.JMenuItem();
+        jmi_mostrar = new javax.swing.JMenuItem();
+        jpm_opcionesLista = new javax.swing.JPopupMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         tabsPrincipales = new javax.swing.JTabbedPane();
         jp_agregar = new javax.swing.JPanel();
         lblNombre = new javax.swing.JLabel();
@@ -62,7 +77,7 @@ public class Principal extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jl_listaPersonas = new javax.swing.JList<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -73,7 +88,25 @@ public class Principal extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
 
+        jmi_limpiar.setText("Limpiar");
+        jpm_menuOpciones.add(jmi_limpiar);
+
+        jmi_mostrar.setText("Mostrar");
+        jpm_menuOpciones.add(jmi_mostrar);
+
+        jMenuItem6.setText("Editar");
+        jpm_opcionesLista.add(jMenuItem6);
+
+        jMenuItem7.setText("Eliminar");
+        jpm_opcionesLista.add(jMenuItem7);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jp_agregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jp_agregarMouseClicked(evt);
+            }
+        });
 
         lblNombre.setText("Nombre");
 
@@ -298,28 +331,33 @@ public class Principal extends javax.swing.JFrame {
 
         tabsPrincipales.addTab("EjemploCopmboBox", jp_ejemplo);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        jl_listaPersonas.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jl_listaPersonas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_listaPersonasMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jl_listaPersonas);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(178, 178, 178)
+                .addGap(165, 165, 165)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(230, Short.MAX_VALUE))
+                .addContainerGap(243, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(43, 43, 43)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         tabsPrincipales.addTab("Listas", jPanel1);
@@ -387,68 +425,76 @@ public class Principal extends javax.swing.JFrame {
 
     private void jcbListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbListaActionPerformed
         int pos = jcbLista.getSelectedIndex();
-        Object elemento= jcbLista.getSelectedItem(); 
-        
-        System.out.println("indice "+ pos);
-        System.out.println("Valor "+ elemento);
-        
+        Object elemento = jcbLista.getSelectedItem();
+
+        System.out.println("indice " + pos);
+        System.out.println("Valor " + elemento);
+
         lblTextoSeleccionado.setText(elemento.toString());
     }//GEN-LAST:event_jcbListaActionPerformed
 
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
-       String nombre = txt_nombre.getText();
-       Persona nuevaPersona = new Persona(nombre,nombre);
-        
-      
-       //modelo del combobox.
-       DefaultComboBoxModel modelo= (DefaultComboBoxModel)jcb_ver.getModel();
+        String nombre = txt_nombre.getText();
+        Persona nuevaPersona = new Persona(nombre, nombre);
+
+        //modelo del combobox.
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) jcb_ver.getModel();
 //               if(jcb_agregar.getModel() instanceof DefaultComboBoxModel){
 //                   System.out.println("es un DefaultComboBoxModel");
 //               }
 //       
-         System.out.println("MODELO "+jcb_ver.getModel().getClass());;
-       modelo.addElement(nuevaPersona);
-       JOptionPane.showMessageDialog(this, "Persona creada con exito");
-       
+        System.out.println("MODELO " + jcb_ver.getModel().getClass());;
+        modelo.addElement(nuevaPersona);
+        
+        
+        // agregara a la lista 
+        
+        DefaultListModel modeloLista = (DefaultListModel)jl_listaPersonas.getModel();
+        
+        
+        modeloLista.addElement(nuevaPersona);
+        
+        JOptionPane.showMessageDialog(this, "Persona creada con exito");
+
     }//GEN-LAST:event_btnAgregarMouseClicked
 
     private void jcb_verActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_verActionPerformed
         Object elementoSeleccionado = jcb_ver.getSelectedItem();
-        if(elementoSeleccionado instanceof Persona){
-            Persona p =  (Persona)elementoSeleccionado;
+        if (elementoSeleccionado instanceof Persona) {
+            Persona p = (Persona) elementoSeleccionado;
             txt_mostrarNombre.setText(p.getNombre());
             txt_mostrarApellido.setText(p.getApellido());
-            
+
         }
     }//GEN-LAST:event_jcb_verActionPerformed
 
     private void btn_modificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_modificarMouseClicked
         btn_modificar.setVisible(false);
-        String nuevoNombre =  txt_modificarNombre.getText();
-        String nuevoApellido =   txt_modificarApellido.getText();
-                 Object persona= jcb_modificar.getSelectedItem();
-      if(persona instanceof Persona){
-           Persona personaSeleccionada = (Persona) persona;
-           personaSeleccionada.setNombre(nuevoNombre);
-           personaSeleccionada.setApellido(nuevoApellido);
-              JOptionPane.showMessageDialog(this, "Datos actualizados");
-      }
+        String nuevoNombre = txt_modificarNombre.getText();
+        String nuevoApellido = txt_modificarApellido.getText();
+        Object persona = jcb_modificar.getSelectedItem();
+        if (persona instanceof Persona) {
+            Persona personaSeleccionada = (Persona) persona;
+            personaSeleccionada.setNombre(nuevoNombre);
+            personaSeleccionada.setApellido(nuevoApellido);
+            JOptionPane.showMessageDialog(this, "Datos actualizados");
+        }
     }//GEN-LAST:event_btn_modificarMouseClicked
 
     private void jcb_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_modificarActionPerformed
-        Object persona= jcb_modificar.getSelectedItem();
-      if(persona instanceof Persona){
-          Persona personaSeleccionada = (Persona) persona;
-          txt_modificarNombre.setText(personaSeleccionada.getNombre());
-        txt_modificarApellido.setText(personaSeleccionada.getApellido());
-      }
+        Object persona = jcb_modificar.getSelectedItem();
+        if (persona instanceof Persona) {
+            Persona personaSeleccionada = (Persona) persona;
+            txt_modificarNombre.setText(personaSeleccionada.getNombre());
+            txt_modificarApellido.setText(personaSeleccionada.getApellido());
+        }
     }//GEN-LAST:event_jcb_modificarActionPerformed
 
     private void btn_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_eliminarMouseClicked
-      int pos = jcb_eliminar.getSelectedIndex();
-      DefaultComboBoxModel modelo = (DefaultComboBoxModel)jcb_eliminar.getModel();
-      modelo.removeElementAt(pos);
-      JOptionPane.showMessageDialog(this, "Datos actualizados");
+        int pos = jcb_eliminar.getSelectedIndex();
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) jcb_eliminar.getModel();
+        modelo.removeElementAt(pos);
+        JOptionPane.showMessageDialog(this, "Datos actualizados");
     }//GEN-LAST:event_btn_eliminarMouseClicked
 
     private void jMenuItem5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem5MouseClicked
@@ -456,13 +502,39 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem5MouseClicked
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-               txt_nombre.setText("");
-       txt_mostrarNombre.setText("");
+        txt_nombre.setText("");
+        txt_mostrarNombre.setText("");
         txt_mostrarApellido.setText("");
         txt_modificarNombre.setText("");
         txt_modificarApellido.setText("");
         JOptionPane.showMessageDialog(this, "Pantalla limpia :)");
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jp_agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_agregarMouseClicked
+        int boton = evt.getButton();
+        if (boton == 1) {
+            System.out.println("Seleccionar");
+        }  else if(boton==3){
+          //pop up menu 
+          int x = evt.getX();
+          int y= evt.getY();
+          jpm_menuOpciones.show(jp_agregar,x ,y );
+          
+          
+        }
+//        
+    }//GEN-LAST:event_jp_agregarMouseClicked
+
+    private void jl_listaPersonasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_listaPersonasMouseClicked
+        System.out.println("click!");
+        if(evt.getButton()==3){
+            System.out.println("derecho");
+            jpm_opcionesLista.show(jl_listaPersonas, evt.getX(), evt.getY());
+        }else{
+            System.out.println(evt.getButton());
+        }
+        
+    }//GEN-LAST:event_jl_listaPersonasMouseClicked
 
     /**
      * @param args the command line arguments
@@ -507,7 +579,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -517,6 +588,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
@@ -524,11 +597,16 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jcb_eliminar;
     private javax.swing.JComboBox<String> jcb_modificar;
     private javax.swing.JComboBox<String> jcb_ver;
+    private javax.swing.JList<String> jl_listaPersonas;
+    private javax.swing.JMenuItem jmi_limpiar;
+    private javax.swing.JMenuItem jmi_mostrar;
     private javax.swing.JPanel jp_agregar;
     private javax.swing.JPanel jp_ejemplo;
     private javax.swing.JPanel jp_eliminar;
     private javax.swing.JPanel jp_modificar;
     private javax.swing.JPanel jp_ver;
+    private javax.swing.JPopupMenu jpm_menuOpciones;
+    private javax.swing.JPopupMenu jpm_opcionesLista;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblTextoSeleccionado;
     private javax.swing.JTabbedPane tabsPrincipales;

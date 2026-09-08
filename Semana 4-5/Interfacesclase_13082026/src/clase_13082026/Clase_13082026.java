@@ -83,9 +83,23 @@ public class Clase_13082026 {
 //        Cortes.generarComprobante();
 //        System.out.println("");
 //        Medina.generarComprobante();
+
+        ejemplo();
+        System.out.println("Despues del ejemplo ");
     }
     
     
+    
+    public static void ejemplo(){
+        int numero;
+        String valor;
+        ArrayList<Docente> maestros = new ArrayList<Docente>();
+    }
+    
+    
+    public static void hola(){
+      
+    }
   
     
 }
