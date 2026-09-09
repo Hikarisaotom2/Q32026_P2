@@ -7,6 +7,7 @@ package clase_27082026;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,11 +21,13 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
 
         initComponents();
+        
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         
-        
-        
         DefaultListModel modeloLista = new DefaultListModel();
+        
+        DefaultTableModel modeloTabla = new DefaultTableModel();
+        
 //        
 
         jcb_ver.setModel(modelo);
@@ -33,6 +36,14 @@ public class Principal extends javax.swing.JFrame {
         
         
         jl_listaPersonas.setModel(modeloLista);
+        
+        
+        modeloTabla.addColumn("Nombre");
+        modeloTabla.addColumn("Apellido");
+
+        jt_personas.setModel(modeloTabla);
+        
+        
     }
 
     /**
@@ -48,8 +59,8 @@ public class Principal extends javax.swing.JFrame {
         jmi_limpiar = new javax.swing.JMenuItem();
         jmi_mostrar = new javax.swing.JMenuItem();
         jpm_opcionesLista = new javax.swing.JPopupMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        jmi_editar = new javax.swing.JMenuItem();
+        jmi_eliminar = new javax.swing.JMenuItem();
         tabsPrincipales = new javax.swing.JTabbedPane();
         jp_agregar = new javax.swing.JPanel();
         lblNombre = new javax.swing.JLabel();
@@ -78,6 +89,9 @@ public class Principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jl_listaPersonas = new javax.swing.JList<>();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jt_personas = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -94,11 +108,21 @@ public class Principal extends javax.swing.JFrame {
         jmi_mostrar.setText("Mostrar");
         jpm_menuOpciones.add(jmi_mostrar);
 
-        jMenuItem6.setText("Editar");
-        jpm_opcionesLista.add(jMenuItem6);
+        jmi_editar.setText("Editar");
+        jmi_editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_editarActionPerformed(evt);
+            }
+        });
+        jpm_opcionesLista.add(jmi_editar);
 
-        jMenuItem7.setText("Eliminar");
-        jpm_opcionesLista.add(jMenuItem7);
+        jmi_eliminar.setText("Eliminar");
+        jmi_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_eliminarActionPerformed(evt);
+            }
+        });
+        jpm_opcionesLista.add(jmi_eliminar);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -362,6 +386,38 @@ public class Principal extends javax.swing.JFrame {
 
         tabsPrincipales.addTab("Listas", jPanel1);
 
+        jt_personas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jt_personas);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(46, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+
+        tabsPrincipales.addTab("Tablas", jPanel2);
+
         jMenu1.setText("Guardar");
 
         jMenu2.setText("Guardar como");
@@ -410,14 +466,14 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(tabsPrincipales, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(tabsPrincipales, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         pack();
@@ -536,6 +592,34 @@ public class Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jl_listaPersonasMouseClicked
 
+    private void jmi_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminarActionPerformed
+        int index = jl_listaPersonas.getSelectedIndex();
+        if(index!=-1){
+            DefaultListModel modelo = (DefaultListModel)jl_listaPersonas.getModel();
+            modelo.remove(index);
+               JOptionPane.showMessageDialog(this, "Elemento eliminado! ");
+       }else{
+          JOptionPane.showMessageDialog(this, "No hay nignun elemento seleccionado ");
+      }
+    }//GEN-LAST:event_jmi_eliminarActionPerformed
+
+    private void jmi_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_editarActionPerformed
+        int index = jl_listaPersonas.getSelectedIndex();
+      if(index!=-1){
+            DefaultListModel modelo = (DefaultListModel)jl_listaPersonas.getModel();
+            Object elementoSleccionado = modelo.getElementAt(index);
+            if(elementoSleccionado instanceof Persona){
+                Persona personaSeleccionada = (Persona)elementoSleccionado;
+                String nuevoNombre = JOptionPane.showInputDialog("Ingrese el nombre:");
+                personaSeleccionada.setNombre(nuevoNombre);
+                 JOptionPane.showMessageDialog(this, "Datos actualizados");
+                
+            }
+        }else{
+          JOptionPane.showMessageDialog(this, "No hay nignun elemento seleccionado ");
+      }
+    }//GEN-LAST:event_jmi_editarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -568,8 +652,9 @@ public class Principal extends javax.swing.JFrame {
             public void run() {
                 new Principal().setVisible(true);
             }
-        });
+        });        
     }
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
@@ -588,16 +673,18 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JComboBox<String> jcbLista;
     private javax.swing.JComboBox<String> jcb_eliminar;
     private javax.swing.JComboBox<String> jcb_modificar;
     private javax.swing.JComboBox<String> jcb_ver;
     private javax.swing.JList<String> jl_listaPersonas;
+    private javax.swing.JMenuItem jmi_editar;
+    private javax.swing.JMenuItem jmi_eliminar;
     private javax.swing.JMenuItem jmi_limpiar;
     private javax.swing.JMenuItem jmi_mostrar;
     private javax.swing.JPanel jp_agregar;
@@ -607,6 +694,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jp_ver;
     private javax.swing.JPopupMenu jpm_menuOpciones;
     private javax.swing.JPopupMenu jpm_opcionesLista;
+    private javax.swing.JTable jt_personas;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblTextoSeleccionado;
     private javax.swing.JTabbedPane tabsPrincipales;
