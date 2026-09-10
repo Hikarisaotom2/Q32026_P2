@@ -92,6 +92,13 @@ public class Principal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jt_personas = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
+        lbl_filaTabla = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        lbl_columnaTabla = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        lbl_valorTabla = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -397,15 +404,39 @@ public class Principal extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jt_personas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_personasMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jt_personas);
+
+        jLabel5.setText("Fila seleccionada");
+
+        lbl_filaTabla.setText("jLabel6");
+
+        jLabel7.setText("Columna selecionada");
+
+        lbl_columnaTabla.setText("jLabel8");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(jLabel5)
+                        .addGap(44, 44, 44)
+                        .addComponent(lbl_filaTabla)
+                        .addGap(96, 96, 96)
+                        .addComponent(jLabel7)
+                        .addGap(47, 47, 47)
+                        .addComponent(lbl_columnaTabla)))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -413,10 +444,32 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(lbl_filaTabla)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(lbl_columnaTabla))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabsPrincipales.addTab("Tablas", jPanel2);
+
+        jButton1.setText("Eliminar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        jLabel6.setText("Valor seleccionado");
+
+        lbl_valorTabla.setText("jLabel7");
 
         jMenu1.setText("Guardar");
 
@@ -464,8 +517,17 @@ public class Principal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(tabsPrincipales, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(tabsPrincipales, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(142, 142, 142)
+                        .addComponent(jButton1)
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel6)
+                        .addGap(44, 44, 44)
+                        .addComponent(lbl_valorTabla)))
                 .addContainerGap(114, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -473,7 +535,12 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(tabsPrincipales, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jLabel6)
+                    .addComponent(lbl_valorTabla))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -510,6 +577,16 @@ public class Principal extends javax.swing.JFrame {
         
         modeloLista.addElement(nuevaPersona);
         
+        
+        
+        /// Agregar el elemento a la tabla 
+        
+        DefaultTableModel modeloTabla = (DefaultTableModel)jt_personas.getModel();
+        
+        Object [] datos = {nuevaPersona, nuevaPersona.getApellido()};
+        
+        modeloTabla.addRow(datos);
+        
         JOptionPane.showMessageDialog(this, "Persona creada con exito");
 
     }//GEN-LAST:event_btnAgregarMouseClicked
@@ -525,7 +602,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jcb_verActionPerformed
 
     private void btn_modificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_modificarMouseClicked
-        btn_modificar.setVisible(false);
+
         String nuevoNombre = txt_modificarNombre.getText();
         String nuevoApellido = txt_modificarApellido.getText();
         Object persona = jcb_modificar.getSelectedItem();
@@ -620,6 +697,38 @@ public class Principal extends javax.swing.JFrame {
       }
     }//GEN-LAST:event_jmi_editarActionPerformed
 
+    private void jt_personasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_personasMouseClicked
+     int columna= jt_personas.getSelectedColumn();
+     int fila = jt_personas.getSelectedRow();
+     
+     DefaultTableModel modeloTabla = (DefaultTableModel)jt_personas.getModel();
+     
+     Object valor = modeloTabla.getValueAt(fila, columna);
+     lbl_filaTabla.setText(fila+"");
+     lbl_columnaTabla.setText(columna+"");
+     lbl_valorTabla.setText(valor.toString());
+    
+      
+     // taano de las filas = matriz.length  == modeloTabla.getRowCount()
+     // tamano de las columnas matriz[i].length ==  modeloTabla.getColumnCount()
+     // valor en una pos i, j matriz[i][j] == modeloTabla.getValueAt(i, j);
+     
+    }//GEN-LAST:event_jt_personasMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+         int columna= jt_personas.getSelectedColumn();
+     int fila = jt_personas.getSelectedRow();
+        System.out.println("Fila seleccionada:"+fila);
+     DefaultTableModel modeloTabla = (DefaultTableModel)jt_personas.getModel();
+     if(fila!=-1){
+     modeloTabla.removeRow(fila);
+     JOptionPane.showMessageDialog(this, "Fila eliminada! ");
+     
+     }else{
+          JOptionPane.showMessageDialog(this, "No hay nignun elemento seleccionado ");
+      }
+    }//GEN-LAST:event_jButton1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -660,10 +769,14 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_modificar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -697,6 +810,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTable jt_personas;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblTextoSeleccionado;
+    private javax.swing.JLabel lbl_columnaTabla;
+    private javax.swing.JLabel lbl_filaTabla;
+    private javax.swing.JLabel lbl_valorTabla;
     private javax.swing.JTabbedPane tabsPrincipales;
     private javax.swing.JTextField txt_modificarApellido;
     private javax.swing.JTextField txt_modificarNombre;
