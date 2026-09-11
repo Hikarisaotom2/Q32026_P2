@@ -4,8 +4,10 @@
  */
 package clase_27082026;
 
+import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -57,10 +59,15 @@ public class Principal extends javax.swing.JFrame {
 
         jpm_menuOpciones = new javax.swing.JPopupMenu();
         jmi_limpiar = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jmi_mostrar = new javax.swing.JMenuItem();
         jpm_opcionesLista = new javax.swing.JPopupMenu();
         jmi_editar = new javax.swing.JMenuItem();
         jmi_eliminar = new javax.swing.JMenuItem();
+        jd_settings = new javax.swing.JDialog();
+        jLabel8 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        txt_nombreDialog = new javax.swing.JTextField();
         tabsPrincipales = new javax.swing.JTabbedPane();
         jp_agregar = new javax.swing.JPanel();
         lblNombre = new javax.swing.JLabel();
@@ -96,6 +103,9 @@ public class Principal extends javax.swing.JFrame {
         lbl_filaTabla = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         lbl_columnaTabla = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        lbl_label = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         lbl_valorTabla = new javax.swing.JLabel();
@@ -111,8 +121,14 @@ public class Principal extends javax.swing.JFrame {
 
         jmi_limpiar.setText("Limpiar");
         jpm_menuOpciones.add(jmi_limpiar);
+        jpm_menuOpciones.add(jSeparator1);
 
         jmi_mostrar.setText("Mostrar");
+        jmi_mostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_mostrarActionPerformed(evt);
+            }
+        });
         jpm_menuOpciones.add(jmi_mostrar);
 
         jmi_editar.setText("Editar");
@@ -130,6 +146,45 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jpm_opcionesLista.add(jmi_eliminar);
+
+        jLabel8.setText("Datos");
+
+        jButton2.setText("Modificar en Padre");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
+        txt_nombreDialog.setText("jTextField2");
+
+        javax.swing.GroupLayout jd_settingsLayout = new javax.swing.GroupLayout(jd_settings.getContentPane());
+        jd_settings.getContentPane().setLayout(jd_settingsLayout);
+        jd_settingsLayout.setHorizontalGroup(
+            jd_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_settingsLayout.createSequentialGroup()
+                .addGroup(jd_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_settingsLayout.createSequentialGroup()
+                        .addGap(223, 223, 223)
+                        .addComponent(jLabel8))
+                    .addGroup(jd_settingsLayout.createSequentialGroup()
+                        .addGap(206, 206, 206)
+                        .addGroup(jd_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_nombreDialog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2))))
+                .addContainerGap(254, Short.MAX_VALUE))
+        );
+        jd_settingsLayout.setVerticalGroup(
+            jd_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_settingsLayout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addComponent(jLabel8)
+                .addGap(39, 39, 39)
+                .addComponent(txt_nombreDialog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(jButton2)
+                .addContainerGap(141, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -460,6 +515,40 @@ public class Principal extends javax.swing.JFrame {
 
         tabsPrincipales.addTab("Tablas", jPanel2);
 
+        jButton3.setText("color");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+
+        lbl_label.setText("jLabel9");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(60, 60, 60))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(255, 255, 255)
+                .addComponent(lbl_label)
+                .addContainerGap(405, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jButton3)
+                .addGap(18, 18, 18)
+                .addComponent(lbl_label)
+                .addContainerGap(195, Short.MAX_VALUE))
+        );
+
+        tabsPrincipales.addTab("tab8", jPanel3);
+
         jButton1.setText("Eliminar");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -729,6 +818,26 @@ public class Principal extends javax.swing.JFrame {
       }
     }//GEN-LAST:event_jButton1MouseClicked
 
+    private void jmi_mostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrarActionPerformed
+        jd_settings.pack();
+        jd_settings.setVisible(true);
+        
+    }//GEN-LAST:event_jmi_mostrarActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        txt_nombre.setText(txt_nombreDialog.getText());
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        
+        
+        Color seleccionado = JColorChooser.showDialog(this, "Seleccione un colorcito",Color.CYAN);
+        lbl_label.setOpaque(true);
+        lbl_label.setBackground(seleccionado);
+        
+        
+    }//GEN-LAST:event_jButton3MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -770,6 +879,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_modificar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -777,6 +888,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -788,13 +900,16 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JComboBox<String> jcbLista;
     private javax.swing.JComboBox<String> jcb_eliminar;
     private javax.swing.JComboBox<String> jcb_modificar;
     private javax.swing.JComboBox<String> jcb_ver;
+    private javax.swing.JDialog jd_settings;
     private javax.swing.JList<String> jl_listaPersonas;
     private javax.swing.JMenuItem jmi_editar;
     private javax.swing.JMenuItem jmi_eliminar;
@@ -812,6 +927,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel lblTextoSeleccionado;
     private javax.swing.JLabel lbl_columnaTabla;
     private javax.swing.JLabel lbl_filaTabla;
+    private javax.swing.JLabel lbl_label;
     private javax.swing.JLabel lbl_valorTabla;
     private javax.swing.JTabbedPane tabsPrincipales;
     private javax.swing.JTextField txt_modificarApellido;
@@ -819,5 +935,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField txt_mostrarApellido;
     private javax.swing.JTextField txt_mostrarNombre;
     private javax.swing.JTextField txt_nombre;
+    private javax.swing.JTextField txt_nombreDialog;
     // End of variables declaration//GEN-END:variables
 }
