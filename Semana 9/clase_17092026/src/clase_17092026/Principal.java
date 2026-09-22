@@ -21,23 +21,19 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
 
         DefaultMutableTreeNode raiz = new DefaultMutableTreeNode("Usuarios");
-        
-        
+
         // nodos 
-        
         DefaultMutableTreeNode admins = new DefaultMutableTreeNode("Admins");
         DefaultMutableTreeNode regulares = new DefaultMutableTreeNode("Regulares");
-        
-        
+
         // agregar hijos dentro de un nodo 
-        
         raiz.add(admins);
         raiz.add(regulares);
-        
+
         DefaultTreeModel modeloArbol = new DefaultTreeModel(raiz);
-        
+
         jt_arbolito.setModel(modeloArbol);
-        
+
     }
 
     /**
@@ -56,9 +52,19 @@ public class Principal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jcb_tipoUsuario = new javax.swing.JComboBox<>();
         btn_crear = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        lbl_label = new javax.swing.JLabel();
+        lbl_tipo = new javax.swing.JLabel();
+        btn_eliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jt_arbolito.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_arbolitoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jt_arbolito);
 
         jLabel1.setText("Nombre");
@@ -71,6 +77,21 @@ public class Principal extends javax.swing.JFrame {
         btn_crear.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_crearMouseClicked(evt);
+            }
+        });
+
+        jLabel3.setText("Nombre");
+
+        jLabel4.setText("Tipo");
+
+        lbl_label.setText("jLabel5");
+
+        lbl_tipo.setText("jLabel6");
+
+        btn_eliminar.setText("Eliminar");
+        btn_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_eliminarMouseClicked(evt);
             }
         });
 
@@ -91,15 +112,43 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jScrollPane1)
                     .addComponent(txt_nombre)
                     .addComponent(jcb_tipoUsuario, 0, 265, Short.MAX_VALUE))
-                .addGap(40, 40, 40)
-                .addComponent(btn_crear)
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(48, 48, 48)
+                                .addComponent(lbl_label))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbl_tipo))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_eliminar)
+                            .addComponent(btn_crear))))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(lbl_label))
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(lbl_tipo))
+                        .addGap(46, 46, 46)
+                        .addComponent(btn_eliminar)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(56, 56, 56)
@@ -120,16 +169,16 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_crearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_crearMouseClicked
-        String nombre= txt_nombre.getText();
+        String nombre = txt_nombre.getText();
         int tipo = jcb_tipoUsuario.getSelectedIndex();
-        Usuario nuevoUser = new Usuario(nombre,tipo);
-        DefaultTreeModel modeloArbol = (DefaultTreeModel)jt_arbolito.getModel();
-       DefaultMutableTreeNode raiz = (DefaultMutableTreeNode)modeloArbol.getRoot();
-       
-       int cantidadHijos = raiz.getChildCount(); 
-       // 0.... size-1
-       
-       // 1 optimizar 
+        Usuario nuevoUser = new Usuario(nombre, tipo);
+        DefaultTreeModel modeloArbol = (DefaultTreeModel) jt_arbolito.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloArbol.getRoot();
+
+        int cantidadHijos = raiz.getChildCount();
+        // 0.... size-1
+
+        // 1 optimizar 
 //       if(tipo==0){// admin 
 //           DefaultMutableTreeNode nodoAdmin = (DefaultMutableTreeNode)raiz.getChildAt(0);
 //           
@@ -144,20 +193,66 @@ public class Principal extends javax.swing.JFrame {
 //           DefaultMutableTreeNode nuevoNodo = new DefaultMutableTreeNode(nuevoUser);
 //            nodoRegular.add(nuevoNodo);
 //       }
+        DefaultMutableTreeNode nodoAdmin = (DefaultMutableTreeNode) raiz.getChildAt(tipo);
+        //crear nuevo nodo 
+        DefaultMutableTreeNode nuevoNodo = new DefaultMutableTreeNode(nuevoUser);
+        //agregar nodo como hijo 
+        nodoAdmin.add(nuevoNodo);
 
+        modeloArbol.reload();
 
-            DefaultMutableTreeNode nodoAdmin = (DefaultMutableTreeNode)raiz.getChildAt(tipo);
-           //crear nuevo nodo 
-           DefaultMutableTreeNode nuevoNodo = new DefaultMutableTreeNode(nuevoUser);
-           //agregar nodo como hijo 
-           nodoAdmin.add(nuevoNodo);
+        JOptionPane.showMessageDialog(this, "Usuario creado!");
 
-       
-       modeloArbol.reload();
-       
-       JOptionPane.showMessageDialog(this, "Usuario creado!");
-       
     }//GEN-LAST:event_btn_crearMouseClicked
+
+    private void jt_arbolitoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_arbolitoMouseClicked
+        //acceder al elemento seleccionado 
+        DefaultMutableTreeNode nodoSeleccionado = (DefaultMutableTreeNode) jt_arbolito.getSelectionPath().getLastPathComponent();
+        Object elemento = nodoSeleccionado.getUserObject();
+
+        // mostrar l;a informacion del elemenrto seleccionado 
+        if (elemento instanceof Usuario) {
+            Usuario usuario = (Usuario) nodoSeleccionado.getUserObject();
+            lbl_label.setText(usuario.getNombre());
+            lbl_tipo.setText(usuario.getTipo() + "");
+
+        } else {
+            lbl_label.setText("N/A");
+            lbl_tipo.setText("N/A");
+        }
+
+
+    }//GEN-LAST:event_jt_arbolitoMouseClicked
+
+    private void btn_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_eliminarMouseClicked
+        DefaultMutableTreeNode nodoSeleccionado = (DefaultMutableTreeNode) jt_arbolito.getSelectionPath().getLastPathComponent();
+
+        if (nodoSeleccionado.getParent() == null) {
+            JOptionPane.showMessageDialog(this, "No podemos eliminar la raiz, que le pasa >:V !!");
+        } else {
+            int cantidadHijos = nodoSeleccionado.getChildCount();
+
+            if (cantidadHijos == 0) {// es una hoja 
+                DefaultMutableTreeNode nodoPadre = (DefaultMutableTreeNode) nodoSeleccionado.getParent();
+                if (nodoPadre.isRoot()) {// que no sea hijo de la raiz
+                    JOptionPane.showMessageDialog(this, "No podemos eliminar nodos!!");
+
+                } else {
+                    nodoPadre.remove(nodoSeleccionado);
+                    DefaultTreeModel modeloArbol = (DefaultTreeModel) jt_arbolito.getModel();
+                    modeloArbol.reload();
+                    JOptionPane.showMessageDialog(this, "Nodo Hijo eliminado!");
+                }
+            } else {//else tiene ser un nodo 
+                // no podemos eliminar 
+                JOptionPane.showMessageDialog(this, "No podemos eliminar nodos!!");
+            }
+        }
+
+        // Nodo: puede tener hijos 
+        // Hoja : no tiene hijos 
+        //Raiz 
+    }//GEN-LAST:event_btn_eliminarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -196,11 +291,16 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_crear;
+    private javax.swing.JButton btn_eliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> jcb_tipoUsuario;
     private javax.swing.JTree jt_arbolito;
+    private javax.swing.JLabel lbl_label;
+    private javax.swing.JLabel lbl_tipo;
     private javax.swing.JTextField txt_nombre;
     // End of variables declaration//GEN-END:variables
 }
