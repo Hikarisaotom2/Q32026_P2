@@ -7,9 +7,16 @@ package clase_22092026;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -23,7 +30,9 @@ public class Principal extends javax.swing.JFrame {
      * Creates new form Principal
      */
     public Principal() {
-        initComponents();
+        initComponents();        
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        jcb_usuarios.setModel(modelo);
     }
 
     /**
@@ -35,10 +44,21 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txt_contenido = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        txt_nombre = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txt_username = new javax.swing.JTextField();
+        txt_contra = new javax.swing.JTextField();
+        btn_guardarUsuario = new javax.swing.JButton();
+        jcb_usuarios = new javax.swing.JComboBox<>();
+        btn_guardarArchivo = new javax.swing.JButton();
+        btn_abrirArchivo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,32 +80,137 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(70, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jButton1)
+                        .addGap(73, 73, 73)
+                        .addComponent(jButton2)))
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Texto", jPanel1);
+
+        jLabel1.setText("Nombre");
+
+        jLabel2.setText("contra");
+
+        txt_username.setText("jTextField1");
+
+        txt_contra.setText("jTextField2");
+
+        btn_guardarUsuario.setText("Guardar");
+        btn_guardarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_guardarUsuarioMouseClicked(evt);
+            }
+        });
+
+        jcb_usuarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btn_guardarArchivo.setText("Guardar File");
+        btn_guardarArchivo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_guardarArchivoMouseClicked(evt);
+            }
+        });
+
+        btn_abrirArchivo.setText("Abrir File");
+        btn_abrirArchivo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_abrirArchivoMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout txt_nombreLayout = new javax.swing.GroupLayout(txt_nombre);
+        txt_nombre.setLayout(txt_nombreLayout);
+        txt_nombreLayout.setHorizontalGroup(
+            txt_nombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(txt_nombreLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(txt_nombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(txt_nombreLayout.createSequentialGroup()
+                        .addGroup(txt_nombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addGap(39, 39, 39)
+                        .addGroup(txt_nombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_username, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                            .addComponent(txt_contra))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(txt_nombreLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jcb_usuarios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_nombreLayout.createSequentialGroup()
+                .addContainerGap(368, Short.MAX_VALUE)
+                .addComponent(btn_guardarUsuario)
+                .addGap(72, 72, 72))
+            .addGroup(txt_nombreLayout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(btn_guardarArchivo)
+                .addGap(130, 130, 130)
+                .addComponent(btn_abrirArchivo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        txt_nombreLayout.setVerticalGroup(
+            txt_nombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(txt_nombreLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(txt_nombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4)
+                .addComponent(btn_guardarUsuario)
+                .addGap(1, 1, 1)
+                .addGroup(txt_nombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txt_contra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
+                .addComponent(jcb_usuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67)
+                .addGroup(txt_nombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_guardarArchivo)
+                    .addComponent(btn_abrirArchivo))
+                .addContainerGap(95, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Binario", txt_nombre);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jButton1)
-                        .addGap(27, 27, 27)
-                        .addComponent(jButton2)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGap(22, 22, 22)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -152,6 +277,63 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2MouseClicked
 
+    private void btn_guardarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guardarUsuarioMouseClicked
+        String nombre = txt_username.getText();
+        String clave = txt_contra.getText();
+        Usuario nuevoUsuario = new Usuario(nombre,clave);
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel)jcb_usuarios.getModel();
+        modelo.addElement(nuevoUsuario);
+        JOptionPane.showMessageDialog(this, "Usuario creado!");
+    }//GEN-LAST:event_btn_guardarUsuarioMouseClicked
+
+    private void btn_guardarArchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guardarArchivoMouseClicked
+      JFileChooser filechooser = new JFileChooser();
+      int op = filechooser.showSaveDialog(this);
+      
+      if(op == JFileChooser.APPROVE_OPTION){
+          File archivoSeleccionado = filechooser.getSelectedFile();
+          try{
+              FileOutputStream fos = new FileOutputStream(archivoSeleccionado);
+              ObjectOutputStream oos = new ObjectOutputStream(fos);
+              oos.writeObject((DefaultComboBoxModel)jcb_usuarios.getModel());
+              JOptionPane.showMessageDialog(this, "Archivo creado!");
+              oos.close();
+          }catch(IOException e){
+              System.out.println("Algo salio mal con el archivo!");
+              System.out.println(e);
+          }
+      }
+    }//GEN-LAST:event_btn_guardarArchivoMouseClicked
+
+    private void btn_abrirArchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_abrirArchivoMouseClicked
+         JFileChooser filechooser = new JFileChooser();
+      int op = filechooser.showOpenDialog(this);
+      
+      if(op == JFileChooser.APPROVE_OPTION){
+          File archivoSeleccionado = filechooser.getSelectedFile();
+          try{
+             FileInputStream fis = new FileInputStream(archivoSeleccionado);
+             ObjectInputStream ois = new ObjectInputStream(fis);
+             Object objetoAlmacenado = ois.readObject();
+             
+             if(objetoAlmacenado instanceof DefaultComboBoxModel){
+                 DefaultComboBoxModel modelo = (DefaultComboBoxModel) objetoAlmacenado;
+                 jcb_usuarios.setModel(modelo);
+                 JOptionPane.showMessageDialog(this, "Informacion cargada!!");
+                 
+                 
+             }
+             ois.close();
+          }catch(IOException e){
+              System.out.println("Algo salio mal con el archivo!");
+              System.out.println(e);
+          }  catch (ClassNotFoundException ex) {
+                  System.out.println("Algo salio mal con el archivo!");
+              System.out.println(ex);
+          }
+      }
+    }//GEN-LAST:event_btn_abrirArchivoMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -188,9 +370,20 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_abrirArchivo;
+    private javax.swing.JButton btn_guardarArchivo;
+    private javax.swing.JButton btn_guardarUsuario;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JComboBox<String> jcb_usuarios;
     private javax.swing.JTextArea txt_contenido;
+    private javax.swing.JTextField txt_contra;
+    private javax.swing.JPanel txt_nombre;
+    private javax.swing.JTextField txt_username;
     // End of variables declaration//GEN-END:variables
 }
